@@ -35,7 +35,7 @@ set :execution_mode, :system
 # This task is the environment that is loaded for all remote run commands, such as
 # `mina deploy` or `mina rake`.
 task :environment do
-  command %[source ˜/.bash_profile]
+  command %[source /home/shunsuke/.bash_profile]
   command %[rvm use 'ruby-2.3.1']
   # If you're using rbenv, use this to load the rbenv environment.
   # Be sure to commit your .ruby-version or .rbenv-version to your repository.
@@ -48,13 +48,13 @@ end
 # Put any custom commands you need to run at setup
 # All paths in `shared_dirs` and `shared_paths` will be created on their own.
 task :setup1 do
-command %[sudo mkdir /var/www]
-command %[sudo mkdir /var/www/html]
-command %[sudo chown shunsuke /var/www/html]
-command %[mkdir -p "fetch(:current_path)/shared/log"]
-command %[chmod g+rx,u+rwx "fetch(:current_path)/shared/log"]
+  command %[sudo mkdir -p /var/www]
+  command %[sudo mkdir -p /var/www/html]
+  command %[sudo chown shunsuke /var/www/html]
+  command %[mkdir -p "/var/www/html/shared/log"]
+  command %[chmod g+rx,u+rwx "/var/www/html/shared/log"]
  
-command %[touch "fetch(:current_path)/shared/.env"]
+  command %[touch "/var/www/html/shared/.env"]
   # command %{rbenv install 2.3.0}
 end
 
