@@ -1,0 +1,18 @@
+<%= form_for @item do |f| %>
+<% if @item.errors.any? %>
+  <div id="error_explanation">
+    <h2>validation error:</h2>
+    <ul>
+    <% @item.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div>name<%= f.text_field :name %></div>
+<div>price<%= f.text_area :price %></div>
+<div>description<%= f.text_area :description %></div>
+<div>img_url<%= f.text_area :img_url %></div>
+<div><%= f.submit "submit" %></div>
+<% end %>
