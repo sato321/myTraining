@@ -1,2 +1,21 @@
-<h1>Items#index</h1>
-<p>Find me in app/views/items/index.html.erb</p>
+<h1>Items</h1>
+<% @items.each do |item| %>
+<table>
+  <thead>
+    <tr>
+      <th>image</th>
+      <th>name</th>
+      <th>price</th>
+      <th>description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th><%= image_tag item.img_url %></th>
+      <th><%= item.name %></th>
+      <th><%= item.price %></th>
+      <th><%= item.description %></th>
+    </tr>
+  </tbody>
+</table>
+<% end %>
