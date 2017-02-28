@@ -17,10 +17,10 @@ set :keep_releases, 1
 set :rails_env, ENV['RAILS_ENV'] || 'production'
 set :shared_dirs, ['log']
 set :shared_files, ['.env']
- 
+
 set :repository, 'https://github.com/sato321/myTraining.git'
 set :branch, 'master'
- 
+
 set :execution_mode, :system
 
 # Optional settings:
@@ -53,7 +53,7 @@ task :setup1 do
   command %[sudo chown shunsuke /var/www/html]
   command %[mkdir -p "/var/www/html/shared/log"]
   command %[chmod g+rx,u+rwx "/var/www/html/shared/log"]
- 
+
   command %[touch "/var/www/html/shared/.env"]
   # command %{rbenv install 2.3.0}
 end
@@ -68,7 +68,7 @@ task :deploy do
     invoke :'git:clone'
     invoke :'deploy:link_shared_paths'
     invoke :'bundle:install'
-    #invoke :'rails:db_migrate'
+    invoke :'rails:db_migrate'
     invoke :'rails:assets_precompile'
     invoke :'deploy:cleanup'
 
