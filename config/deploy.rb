@@ -68,8 +68,8 @@ task :deploy do
     invoke :'git:clone'
     invoke :'deploy:link_shared_paths'
     invoke :'bundle:install'
-    invoke :'rails:db_migrate'
-    invoke :'rails:assets_precompile'
+    command %{rails db:migrate RAILS_ENV=production}
+    command %{rails assets:precompile RAILS_ENV=production}
     invoke :'deploy:cleanup'
 
     on :launch do
