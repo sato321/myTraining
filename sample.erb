@@ -1,0 +1,41 @@
+
+
+<%= form_for @user do |f| %>
+<div class="container-fluid bg-info">
+<div class="row sampleRow">
+  <div class="col-xs-6 col-md-3">name<%= f.text_field :name %></div>
+  <div class="col-xs-6 col-md-3">comment<%= f.text_area :comment %></div>
+  <div class="col-xs-6 col-md-3">nickname<%= f.text_field :nickname %></div>
+</div>
+</div>
+<div class="btn btn-warning btn-lg btn-block"><%= f.submit "submit" %></div>
+<% end %>
+
+<% kinshi = %w(baka aho) %>
+<h1>comments</h1>
+<% @users.reverse_each do |user| %>
+<div class="container-fluid">
+<div class="row sampleRow">
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>datetime</th>
+            <th>name</th>
+            <th>nickname</th>
+            <th>comment</th>
+        </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th class="danger"><%= user.datetime %></th>
+      <td class="warning"><%= user.name %></td>
+      <td class="info"><%= user.nickname %></td>
+      <td class="success"><%= user.comment unless /#{kinshi.join('|')}/ =~ user.comment%></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+<br>
+<% end %>
+<%= Time.now %>

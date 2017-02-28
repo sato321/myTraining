@@ -1,5 +1,9 @@
 <h1>Items</h1>
-<table>
+
+<% @items.each do |item| %>
+<div class="container-fluid">
+<div class="row sampleRow">
+<table class="table table-bordered">
   <thead>
     <tr>
       <th>image</th>
@@ -9,13 +13,18 @@
     </tr>
   </thead>
   <tbody>
-    <% @items.each do |item| %>
     <tr>
-      <th><%= image_tag item.img_url %></th>
-      <th><%= item.name %></th>
-      <th><%= item.price %></th>
-      <th><%= item.description %></th>
+      <th class="danger"><%= image_tag item.img_url %></th>
+      <td class="warning"><%= item.name %></td>
+      <td class="info"><%= item.price %></td>
+      <td class="success"><%= item.description %></td>
+      <td>
+        <%= link_to("Edit", edit_item_path(item.id)) %>
+        <br>
+        <%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </td>
     </tr>
-    <% end %>
   </tbody>
 </table>
+<% end %>
+<%= link_to("New Item", action: "new") %>

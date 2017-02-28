@@ -1,14 +1,14 @@
 <%= form_for @item do |f| %>
-<% if @item.errors.any? %>
-  <div id="error_explanation">
-    <h2>Validation Error:</h2>
-    <ul>
-    <% @item.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
+  <% if @item.errors.any? %>
+    <div id="error_explanation">
+      <h2>Validation Error:</h2>
+      <ul>
+      <% @item.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
 <div class="container-fluid bg-info">
 <div class="row sampleRow">
@@ -18,7 +18,5 @@
   <div class="col-xs-6 col-md-3">img_url<%= f.text_area :img_url %></div>
 </div>
 </div>
-<div class="btn btn-lg btn-block"><%= f.submit "submit" %></div>
+<div class="btn btn-lg btn-block"><%= f.submit "update" %></div>
 <% end %>
-
-<%= link_to("Items", :action => "index") %>
